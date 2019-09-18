@@ -14,7 +14,7 @@ public class ChurchDB {
     String DATABASE_NAME = "CHURCH";
 
 
-    ChurchDB(Context context){
+    public ChurchDB(Context context){
         this.context = context;
     }
     //데이터베이스 접속 또는 만들기
@@ -30,7 +30,7 @@ public class ChurchDB {
 
     //데이터베이스 테이블 만들기
     private void createTable(){
-        db.execSQL("CREATE TABLE IF NOT EXISTS MALSSEUM(TITLE VARCHAR2(20) NOT NULL, PAGE VARCHAR2(20) NOT NULL, SECTION VARCHAR2(20) NOT NULL);");
+        db.execSQL("CREATE TABLE IF NOT EXISTS MALSSEUM(TITLE VARCHAR2(20) NOT NULL, SUB_TITLE VARCHAR2(20) NOT NULL, PAGE VARCHAR2(20) NOT NULL, SECTION VARCHAR2(20) NOT NULL, CONTENTS VARCHAR2(2000) NOT NULL);");
     }
 
 }
