@@ -1,13 +1,17 @@
 package com.ydn.church.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ydn.church.Entity.Malsseum;
+import com.ydn.church.MalsseumContentActivity;
 import com.ydn.church.R;
 
 import java.util.ArrayList;
@@ -67,9 +71,17 @@ public class MalsseumAdapter extends BaseExpandableListAdapter {
         if(view == null)
             view = layoutInflater.inflate(R.layout.malsseum_item,null);
 
-        TextView tv = view.findViewById(R.id.malsseum_item_textview);
+        TextView tv = (TextView) view.findViewById(R.id.malsseum_item_textview);
+        ImageView iv= (ImageView) view.findViewById(R.id.malsseum_item_image_view);
+        iv.setTag("down");
         tv.setText(malsseums.get(i).getMainCategory().toString());
-
+        if(b) {
+            iv.setTag("up");
+            iv.setImageResource(R.drawable.drop_up);
+        }else {
+            iv.setTag("down");
+            iv.setImageResource(R.drawable.drop_down);
+        }
         return view;
     }
 
@@ -79,8 +91,14 @@ public class MalsseumAdapter extends BaseExpandableListAdapter {
         if(convertView == null)
             convertView = layoutInflater.inflate(R.layout.malsseum_item_child,null);
 
-        TextView tv = convertView.findViewById(R.id.malsseum_item_child_textview);
+        TextView tv = (TextView) convertView.findViewById(R.id.malsseum_item_child_textview);
         tv.setText(malsseums.get(groupPos).getCategory().get(childPos).toString());
+        tv.setOnClickListener((view -> {
+            Intent intent = new Intent(context,MalsseumContentActivity.class);
+            intent.putExtra("title",malsseums.get(groupPos).getCategory().get(childPos));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        }));
 
         return convertView;
     }

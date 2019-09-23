@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MalsseumHeaderContentActivity">
+    <Toolbar
+        android:id="@+id/malsseum_header_content_top_toolbar"
+        style="@style/toolBar">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/malsseum_header_content_back_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="0dp"
+                android:src="@drawable/btn_arrow_back" />
+            <TextView
+                android:id="@+id/malsseum_header_content_title"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:textColor="#28292B"
+                android:textSize="25dp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="말씀"/>
+            <ImageView
+                android:id="@+id/malsseum_header_content_home_btn"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/home"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </Toolbar>
+    <TextView
+        android:layout_centerInParent="true"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:id="@+id/malsseum_header_content_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </TextView>
+
+</RelativeLayout>

@@ -29,8 +29,9 @@ public class ChurchDB {
     }
 
     //데이터베이스 테이블 만들기
-    private void createTable(){
+    public void createTable(){
         db.execSQL("CREATE TABLE IF NOT EXISTS MALSSEUM(TITLE VARCHAR2(20) NOT NULL, SUB_TITLE VARCHAR2(20) NOT NULL, PAGE VARCHAR2(20) NOT NULL, SECTION VARCHAR2(20) NOT NULL, CONTENTS VARCHAR2(2000) NOT NULL);");
+
     }
 
 }

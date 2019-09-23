@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:src="@drawable/bible_book"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/main_malsseum_btn"
+            style="@style/mainLayout">
+            <ImageView
+            android:src="@drawable/main_malsseum"
+            style="@style/mainImage"/>
+            <TextView
+                style="@style/mainTextView"
+                android:text="말씀"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/main_hymn_btn"
+            style="@style/mainLayout">
+            <ImageView
+                style="@style/mainImage"
+                android:src="@drawable/main_hymn"/>
+            <TextView
+                style="@style/mainTextView"
+                android:text="찬송가"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/main_responsive_reading_btn"
+            style="@style/mainLayout">
+            <ImageView
+                style="@style/mainImage"
+                android:src="@drawable/main_responsive_reading"/>
+            <TextView
+                style="@style/mainTextView"
+                android:text="교독문"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/main_contemplation_btn"
+            style="@style/mainLayout">
+            <ImageView
+                style="@style/mainImage"
+                android:src="@drawable/main_contemplation"/>
+            <TextView
+                style="@style/mainTextView"
+                android:text="묵상시간"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

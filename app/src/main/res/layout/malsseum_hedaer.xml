@@ -10,6 +10,7 @@
         android:layout_height="match_parent"
         >
     <TextView
+        android:id="@+id/malsseum_the_lords_prayer"
         android:textColor="#000"
         android:textStyle="bold"
         android:textSize="25dp"
@@ -19,8 +20,9 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/grey_round_border"/>
+        android:background="@drawable/blue_round_border"/>
     <TextView
+        android:id="@+id/malsseum_apostle_creed"
         android:textColor="#000"
         android:textStyle="bold"
         android:textSize="25dp"
@@ -30,6 +32,6 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/grey_round_border"/>
+        android:background="@drawable/blue_round_border"/>
     </LinearLayout>
 </LinearLayout>
