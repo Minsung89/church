@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MalsseumActivity">
+    <Toolbar
+        android:id="@+id/malsseum_content_top_toolbar"
+        style="@style/toolBar">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/malsseum_content_back_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="0dp"
+                android:src="@drawable/btn_arrow_back" />
+            <TextView
+                android:id="@+id/malsseum_content_title"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:textColor="#28292B"
+                android:textSize="25dp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="말씀"/>
+            <ImageView
+                android:id="@+id/malsseum_content_home_btn"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/home"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </Toolbar>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/malsseum_content_vp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/malsseum_content_bottom_toolbar"
+        android:layout_below="@id/malsseum_content_top_toolbar">
+    </android.support.v4.view.ViewPager>
+    <HorizontalScrollView
+        android:background="#fff"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:scrollbars="none"
+        android:layout_marginTop="100dp"
+        android:layout_above="@id/malsseum_content_bottom_toolbar"
+        android:visibility="invisible"
+        android:id="@+id/malsseum_content_page_select"
+        android:layout_width="match_parent"
+        android:layout_height="54dp">
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:id="@+id/malsseum_content_page_select_ll"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </LinearLayout>
+
+
+    </HorizontalScrollView>
+    <Toolbar
+        android:background="#fff"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/malsseum_content_bottom_toolbar"
+        style="@style/toolBar">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/malsseum_content_page_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/page_search" />
+            <ImageView
+                android:visibility="invisible"
+                android:id="@+id/malsseum_content_page_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@id/malsseum_content_page"
+                android:src="@drawable/back_page" />
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:id="@+id/malsseum_content_page"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:textColor="#28292B"
+                android:textSize="25dp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="1장"/>
+            <ImageView
+                android:layout_toRightOf="@id/malsseum_content_page"
+                android:id="@+id/malsseum_content_page_next"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/next_page"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:id="@+id/malsseum_content_reduction"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/reduction"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/malsseum_content_reduction"
+                android:id="@+id/malsseum_content_enlargement"
+                android:src="@drawable/enlargement"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+        </RelativeLayout>
+    </Toolbar>
+
+</RelativeLayout>
