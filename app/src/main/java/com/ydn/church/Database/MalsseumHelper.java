@@ -42,7 +42,6 @@ public class MalsseumHelper extends SQLiteOpenHelper {
     public void update(String item, int price) {
 
     }
-   //RFID 스캔 저장
     public void insert() {
         try {
             db.beginTransaction();

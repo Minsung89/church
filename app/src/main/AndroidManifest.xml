@@ -20,6 +20,8 @@
         <activity android:name=".MalsseumActivity"/>
         <activity android:name=".MalsseumContentActivity"/>
         <activity android:name=".MalsseumHeaderContentActivity"/>
+        <activity android:name=".ResponsiveReadingActivity"/>
+        <activity android:name=".ResponsiveReadingContentActivity"/>
     </application>
 
 </manifest>

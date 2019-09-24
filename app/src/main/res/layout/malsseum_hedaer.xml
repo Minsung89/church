@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/blue_round_border"/>
+        android:background="@drawable/select_menu"/>
     <TextView
         android:id="@+id/malsseum_apostle_creed"
         android:textColor="#000"
@@ -32,6 +32,6 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/blue_round_border"/>
+        android:background="@drawable/select_menu"/>
     </LinearLayout>
 </LinearLayout>

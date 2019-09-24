@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ydn.church.Entity.Malsseum;
@@ -92,8 +93,9 @@ public class MalsseumAdapter extends BaseExpandableListAdapter {
             convertView = layoutInflater.inflate(R.layout.malsseum_item_child,null);
 
         TextView tv = (TextView) convertView.findViewById(R.id.malsseum_item_child_textview);
+        LinearLayout ll = (LinearLayout)convertView.findViewById(R.id.malsseum_item_child_ll);
         tv.setText(malsseums.get(groupPos).getCategory().get(childPos).toString());
-        tv.setOnClickListener((view -> {
+        ll.setOnClickListener((view -> {
             Intent intent = new Intent(context,MalsseumContentActivity.class);
             intent.putExtra("title",malsseums.get(groupPos).getCategory().get(childPos));
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

@@ -5,9 +5,10 @@
     android:orientation="vertical"
     >
     <LinearLayout
+        android:id="@+id/malsseum_item_child_ll"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/blue_round_border"
+        android:background="@drawable/select_menu"
         android:paddingLeft="16dp"
         android:orientation="vertical"
         android:layout_marginBottom="1dp"

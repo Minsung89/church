@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">성경말씀</string>
+    <string name="malsseum_title">말씀</string>
+    <string name="responsive_reading_title">교독문</string>
     <string name="malsseum_the_lords_prayer_content">하늘에 계신 우리 아버지여,\n
 이름이 거룩히 여김을 받으시오며,\n
 나라이 임하옵시며,\n

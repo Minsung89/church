@@ -5,14 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MalsseumActivity">
+    tools:context=".ResponsiveReadingActivity">
     <Toolbar
         style="@style/toolBar">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <ImageView
-                android:id="@+id/malsseum_back_btn"
+                android:id="@+id/rr_back_btn"
                 android:layout_alignParentLeft="true"
                 android:src="@drawable/btn_arrow_back"
                 android:layout_width="wrap_content"
@@ -25,9 +25,9 @@
                 android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/malsseum_title"/>
+                android:text="@string/responsive_reading_title"/>
             <ImageView
-                android:id="@+id/malsseum_home_btn"
+                android:id="@+id/rr_home_btn"
                 android:layout_marginRight="20dp"
                 android:layout_alignParentRight="true"
                 android:src="@drawable/home"
@@ -41,17 +41,13 @@
         android:layout_alignParentBottom="true"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
+        android:layout_height="match_parent"
         >
-       <ExpandableListView
-           android:groupIndicator="@android:color/transparent"
-           android:divider ="@null"
-           android:childDivider="@null"
-           android:id="@+id/malsseum_list"
+       <android.support.v7.widget.RecyclerView
+           android:id="@+id/rr_rv"
            android:layout_width="match_parent"
            android:layout_height="match_parent">
-       </ExpandableListView>
+       </android.support.v7.widget.RecyclerView>
     </LinearLayout>
 
 </LinearLayout>

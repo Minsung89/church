@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MalsseumActivity">
+    tools:context=".MalsseumContentActivity">
     <Toolbar
         android:id="@+id/malsseum_content_top_toolbar"
         style="@style/toolBar">
@@ -31,7 +31,7 @@
                 android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="말씀"/>
+                android:text="@string/malsseum_title"/>
             <ImageView
                 android:id="@+id/malsseum_content_home_btn"
                 android:layout_marginRight="20dp"

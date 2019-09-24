@@ -57,14 +57,9 @@ public class MalsseumContentFragment extends Fragment {
         if(mcs != null) {
             malseumRvAdapter = new MalseumRvAdapter(mcs, getActivity(), malsseumContentEnlargement, malsseumContentReduction);
 
-            Log.i("너의 값은 무엇인고?",mcs.toString());
             rv.setLayoutManager(new LinearLayoutManager(getActivity()));
             rv.setAdapter(malseumRvAdapter);
 
-            malsseumContentEnlargement.setOnClickListener(view -> {
-                malseumRvAdapter.pageTextSize = malseumRvAdapter.pageTextSize + 10;
-                rv.setAdapter(malseumRvAdapter);
-            });
         }
 
         return rootview;
