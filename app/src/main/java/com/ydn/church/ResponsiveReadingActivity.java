@@ -8,13 +8,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.ydn.church.Adapter.ResponsiveReadingAdapter;
 import com.ydn.church.Database.ResponsiveReadingHelper;
 import com.ydn.church.Entity.ResponsiveReading;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ResponsiveReadingActivity extends AppCompatActivity implements View.OnClickListener {

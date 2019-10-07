@@ -12,6 +12,8 @@ import com.ydn.church.Database.ChurchDB;
 import com.ydn.church.Database.MalsseumHelper;
 import com.ydn.church.Database.ResponsiveReadingHelper;
 
+import java.util.Calendar;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     //Database
@@ -50,12 +52,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mainResponsiveReading = (LinearLayout) findViewById(R.id.main_responsive_reading_btn);
 
 
-        mainContemplationBtn.setOnClickListener((v)-> Log.i("로그찍히나?","로그찍혀"));
+        mainContemplationBtn.setOnClickListener(this::onClick);
         mainMalsseumBtn.setOnClickListener(this::onClick);
         mainHymnBtn.setOnClickListener(this::onClick);
         mainResponsiveReading.setOnClickListener(this::onClick);
 
         Stetho.initializeWithDefaults(this);
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR,2020);
+        Log.i("현재 날짜",cal.get(Calendar.YEAR)+"년 " + cal.get(Calendar.MONTH) +"월 ");
+        Log.i("현재는",cal+"");
+
     }
 
 
@@ -73,6 +81,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mh.getData();
                 break;
             case R.id.main_contemplation_btn :
+                intent = new Intent(this, ContemplationActivity.class);
+                startActivity(intent);
                 break;
             case R.id.main_responsive_reading_btn :
                 intent = new Intent(this, ResponsiveReadingActivity.class);

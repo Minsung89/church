@@ -1,6 +1,5 @@
 package com.ydn.church.Fragment;
 import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.ydn.church.Entity.ResponsiveReading;
@@ -22,6 +22,7 @@ public class ResponsiveReadingContentFragment extends Fragment {
 
     ResponsiveReading rr;
     public LinearLayout linearLayout;
+    public ScrollView scrollView;
     public ResponsiveReadingContentFragment(){}
 
 
@@ -41,6 +42,7 @@ public class ResponsiveReadingContentFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootview = (ViewGroup) inflater.inflate(R.layout.responsive_reading_content_fragment, container, false);
 
+        scrollView = (ScrollView) rootview.findViewById(R.id.rr_content_fm_sc);
         linearLayout = (LinearLayout) rootview.findViewById(R.id.rr_content_fm);
 
 
@@ -66,6 +68,8 @@ public class ResponsiveReadingContentFragment extends Fragment {
                 }
                 break;
             }
+
+
         }
 
 

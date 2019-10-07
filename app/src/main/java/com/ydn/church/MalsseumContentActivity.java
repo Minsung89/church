@@ -1,9 +1,15 @@
 package com.ydn.church;
 
+import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -15,16 +21,24 @@ import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.ydn.church.Adapter.MalsseumPagerAdapter;
 import com.ydn.church.Database.MalsseumHelper;
+import com.ydn.church.Database.MyAlarmHelper;
 import com.ydn.church.Fragment.MalsseumContentFragment;
+import com.ydn.church.Util.AlarmTime;
+import com.ydn.church.Util.AlarmUtil;
 
+import java.util.Calendar;
 import java.util.List;
 
 public class MalsseumContentActivity extends AppCompatActivity implements View.OnClickListener{
 
     MalsseumHelper mh;
+    MyAlarmHelper mah;
+
     String DATABASE_NAME = "CHURCH";
 
     ViewPager malsseumContentVp;
@@ -32,7 +46,8 @@ public class MalsseumContentActivity extends AppCompatActivity implements View.O
     HorizontalScrollView malsseumContentPageSelect;
     LinearLayout malsseumContentPageSelectLl;
     ImageView malsseumContentPageNext, malsseumContentPageBack, malsseumContentPageSearch,
-            malsseumBackBtn, malsseumContentHomeBtn, malsseumContentEnlargement, malsseumContentReduction;
+            malsseumBackBtn, malsseumContentHomeBtn, malsseumContentEnlargement, malsseumContentReduction,
+            malsseumContentAlarm;
 
     MalsseumPagerAdapter malsseumPagerAdapter;
 
@@ -51,6 +66,9 @@ public class MalsseumContentActivity extends AppCompatActivity implements View.O
 
         Intent intent = getIntent();
         String title = intent.getStringExtra("title");
+        int page = intent.getIntExtra("page",1);
+
+
 
         malsseumContentTitle = (TextView) findViewById(R.id.malsseum_content_title);
         malsseumContentVp = (ViewPager) findViewById(R.id.malsseum_content_vp);
@@ -62,8 +80,10 @@ public class MalsseumContentActivity extends AppCompatActivity implements View.O
         malsseumContentPageBack = (ImageView) findViewById(R.id.malsseum_content_page_back);
         malsseumBackBtn = (ImageView) findViewById(R.id.malsseum_content_back_btn);
         malsseumContentHomeBtn = (ImageView) findViewById(R.id.malsseum_content_home_btn);
-        malsseumContentEnlargement = (ImageView) findViewById(R.id.malsseum_content_enlargement);
-        malsseumContentReduction = (ImageView) findViewById(R.id.malsseum_content_reduction);
+//        malsseumContentEnlargement = (ImageView) findViewById(R.id.malsseum_content_enlargement);
+//        malsseumContentReduction = (ImageView) findViewById(R.id.malsseum_content_reduction);
+
+        malsseumContentAlarm = (ImageView) findViewById(R.id.malsseum_content_alarm);
 
         //리스너
         malsseumContentPageSearch.setOnClickListener(this);
@@ -71,11 +91,14 @@ public class MalsseumContentActivity extends AppCompatActivity implements View.O
         malsseumContentPageBack.setOnClickListener(this);
         malsseumBackBtn.setOnClickListener(this);
         malsseumContentHomeBtn.setOnClickListener(this);
-
+        malsseumContentAlarm.setOnClickListener(this);
         //디비
         mh = new MalsseumHelper(this,DATABASE_NAME);
+        mah = new MyAlarmHelper(this,DATABASE_NAME);
         pageCount = mh.getPageCount(title);
 
+        Log.i("pageeeeeee", page+"");
+        Log.i("pageeeeeee", pageCount+"");
         //서치 페이지 생성
         textview(pageCount);
 
@@ -125,7 +148,18 @@ public class MalsseumContentActivity extends AppCompatActivity implements View.O
         //페이지뷰
         malsseumPagerAdapter = new MalsseumPagerAdapter(getSupportFragmentManager(),pageCount,mh,title,malsseumContentEnlargement,malsseumContentReduction);
         malsseumContentVp.setAdapter(malsseumPagerAdapter);
-        malsseumContentVp.setCurrentItem(0);
+
+        if(page != 0) {
+            malsseumContentVp.setCurrentItem(page - 1);
+            malsseumContentPage.setText(page + "장");
+        }
+        else
+            malsseumContentVp.setCurrentItem(0);
+
+        if(malsseumContentVp.getCurrentItem() == 0)
+            malsseumContentPageBack.setVisibility(View.INVISIBLE);
+        if(pageCount -1 == malsseumContentVp.getCurrentItem())
+            malsseumContentPageNext.setVisibility(View.INVISIBLE);
 
         //페이지뷰 리스너
         malsseumContentVp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -208,6 +242,28 @@ public class MalsseumContentActivity extends AppCompatActivity implements View.O
                 startActivity(intent);
                 finish();
                 break;
+            case R.id.malsseum_content_alarm :
+                //알람 설정
+                //timepicker
+                TimePickerDialog tpd = new TimePickerDialog(MalsseumContentActivity.this,android.R.style.Theme_Holo_Light_Dialog_MinWidth, (view, hourOfDay, minute) ->{
+                    Toast.makeText(getApplicationContext(),"묵상말씀시간(매일 "+hourOfDay + ":" + minute+")",Toast.LENGTH_LONG).show();
+                    //알림 및 저장
+                    int sequence = Integer.valueOf( mah.getSequence());
+                    //알림 시간 설정
+                    Calendar calendar = new AlarmTime().setAlarmTime(hourOfDay,minute);
+                    AlarmUtil alarmUtil = new AlarmUtil();
+                    alarmUtil.setAlarm(this,sequence,malsseumContentTitle.getText().toString(), malsseumContentVp.getCurrentItem()+1,calendar);
+                    mah.insert(String.valueOf(sequence + 1),malsseumContentTitle.getText().toString(),malsseumContentPage.getText().toString(),hourOfDay + ":" + minute,"Y");
+
+                },Calendar.HOUR_OF_DAY,Calendar.MINUTE,false);
+
+                tpd.setTitle(malsseumContentTitle.getText().toString()+" "+malsseumContentPage.getText().toString());
+                tpd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                tpd.show();
+                break;
         }
     }
+
+
 }

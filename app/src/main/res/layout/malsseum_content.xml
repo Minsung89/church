@@ -111,22 +111,15 @@
                 android:src="@drawable/next_page"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
             <ImageView
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="20dp"
-                android:id="@+id/malsseum_content_reduction"
-                android:layout_centerVertical="true"
+                android:padding="5dp"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/reduction"
-                android:layout_width="30dp"
-                android:layout_height="30dp" />
-            <ImageView
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@id/malsseum_content_reduction"
-                android:id="@+id/malsseum_content_enlargement"
-                android:src="@drawable/enlargement"
-                android:layout_width="30dp"
-                android:layout_height="30dp" />
+                android:id="@+id/malsseum_content_alarm"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/alarm_click" />
         </RelativeLayout>
     </Toolbar>
 

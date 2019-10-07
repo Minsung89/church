@@ -22,6 +22,10 @@
         <activity android:name=".MalsseumHeaderContentActivity"/>
         <activity android:name=".ResponsiveReadingActivity"/>
         <activity android:name=".ResponsiveReadingContentActivity"/>
+        <activity android:name=".ContemplationActivity"/>
+        <receiver android:name=".Service.AlarmBroadcastReceiver"
+                  android:enabled="true"
+                  android:exported="true"/>
     </application>
 
 </manifest>

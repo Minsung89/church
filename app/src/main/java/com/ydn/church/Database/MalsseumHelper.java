@@ -97,9 +97,39 @@ public class MalsseumHelper extends SQLiteOpenHelper {
         return subTitles;
     }
 
+
+    public String getContent(String subTitle, int page){
+        int section = (int)(Math.random()*getSectionCount(subTitle, page))+1;
+        SQLiteDatabase db = getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT CONTENTS FROM "+TABLE_NAME+" WHERE SUB_TITLE = '"+subTitle+"' AND PAGE = '"+page+"' AND SECTION = '"+section+"';",null);
+        int recordCount = cursor.getCount();
+        if(recordCount < 1 ){
+            return null;
+        }
+        String content = "";
+        for (int i = 0 ; i < recordCount ; i++){
+            cursor.moveToNext();
+            content =cursor.getString(0);
+        }
+
+        return content;
+    }
+
+    public int getSectionCount(String subTitle,int page){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT COUNT(DISTINCT(SECTION)) FROM "+TABLE_NAME+" WHERE SUB_TITLE = '"+subTitle+"' AND PAGE = '"+page+"';",null);
+        for (int i = 0 ; i < cursor.getCount() ; i++){
+            cursor.moveToNext();
+            return Integer.valueOf(cursor.getString(0));
+        }
+
+        return 0;
+    }
+
     public int getPageCount(String subTitle){
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT COUNT(DISTINCT(Page)) FROM "+TABLE_NAME+" WHERE SUB_TITLE = '"+subTitle+"';",null);
+        Cursor cursor = db.rawQuery("SELECT COUNT(DISTINCT(PAGE)) FROM "+TABLE_NAME+" WHERE SUB_TITLE = '"+subTitle+"';",null);
         for (int i = 0 ; i < cursor.getCount() ; i++){
             cursor.moveToNext();
             return Integer.valueOf(cursor.getString(0));
